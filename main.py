@@ -50,8 +50,7 @@ def user_input_agent(state: State, llm):
         pass
     state["messages"].append(AIMessage(content=f"Processed user profile: {json.dumps(state['user_data'], indent=2)}"))
     return state
-
-# [Previous agent functions remain the same, just remove print statements]
+# routine generation agent
 def routine_generation_agent(state: State, llm):
     prompt = ChatPromptTemplate.from_template(
         """You are an AI fitness coach. Create a personalized fitness routine based on the following user data:
@@ -73,7 +72,6 @@ def routine_generation_agent(state: State, llm):
     state["messages"].append(AIMessage(content=f"Generated fitness plan: {plan}"))
     return state
 
-# [Other agent functions remain the same]
 # Feedback Collection Agent
 def feedback_collection_agent(state: State, llm):
     prompt = ChatPromptTemplate.from_template(
