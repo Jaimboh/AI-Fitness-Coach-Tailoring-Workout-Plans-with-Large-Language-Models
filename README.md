@@ -37,17 +37,21 @@ This project implements an AI-powered Fitness Coach that creates personalized fi
 2. Create a virtual environment (optional but recommended):
    ```
    python -m venv venv
-   `source venv/bin/activate`
+   ```
+   ```
+   source venv/bin/activate
+   ```
    # On Windows  use
-   `venv\Scripts\activate`
+   ```
+   venv\Scripts\activate
    ```
 
-3. Install the required packages:
+4. Install the required packages:
    ```
    pip install -r requirements.txt
    ```
 
-4. Ensure you have Ollama installed and running on your system. Visit [Ollama's website](https://ollama.ai/) for installation instructions.
+5. Ensure you have Ollama installed and running on your system. Visit [Ollama's website](https://ollama.ai/) for installation instructions.
 
 ## Usage
 
