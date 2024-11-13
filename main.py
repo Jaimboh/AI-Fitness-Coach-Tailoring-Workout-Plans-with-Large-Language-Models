@@ -27,6 +27,10 @@ class State(TypedDict):
 # Utility function to get OpenAI LLM
 def get_openai_llm():
     return ChatOpenAI(api_key=openai_api_key,model="gpt-4o-mini", temperature=0)
+# Utility function to get Ollama LLM
+def get_ollama_llm(model_name="tinyllama"):
+    print(f"Creating ChatOllama with model: {model_name}")
+    return ChatOllama(model=model_name)
 
 # User Input Agent
 def user_input_agent(state: State, llm):
@@ -144,10 +148,13 @@ def motivational_agent(state: State, llm):
 # AIFitnessCoach class
 class AIFitnessCoach:
     def __init__(self):
+        print("Initializing AIFitnessCoach")
         self.llm = get_openai_llm()
+        # self.llm = get_ollama_llm() you can uncomment this if you prefer to use the locally running llms
         self.graph = self.create_graph()
 
     def create_graph(self):
+        print("Creating graph")
         workflow = StateGraph(State)
 
         # Define nodes
@@ -168,10 +175,11 @@ class AIFitnessCoach:
 
         # Set entry point
         workflow.set_entry_point("user_input")
-
+        print("Graph created")
         return workflow.compile()
 
     def run(self, user_input):
+        print("Running AIFitnessCoach")
         initial_state = State(
             user_data=user_input,
             fitness_plan="",
@@ -179,7 +187,9 @@ class AIFitnessCoach:
             progress=[],
             messages=[HumanMessage(content=json.dumps(user_input))]
         )
+        print(f"Initial state: {initial_state}")
         final_state = self.graph.invoke(initial_state)
+        print(f"Final state: {final_state}")
         return final_state["messages"]
 
 # Streamlit UI
