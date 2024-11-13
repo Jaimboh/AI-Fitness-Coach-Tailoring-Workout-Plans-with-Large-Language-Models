@@ -41,7 +41,7 @@ This project implements an AI-powered Fitness Coach that creates personalized fi
    ```
    source venv/bin/activate
    ```
-   # On Windows  use
+   ### On Windows  use
    ```
    venv\Scripts\activate
    ```
